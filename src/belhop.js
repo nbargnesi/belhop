@@ -1062,6 +1062,25 @@
   };
 
   /**
+   * Search filter factory.
+   *
+   * @protected
+   * @function
+   * @memberof belhop.factory
+   *
+   * @param {!string} searchTerm What to search for
+   *
+   * @return {object} Object representation of a search filter
+   */
+  belhop.factory.searchFilter = function(searchTerm) {
+    return {
+      category: 'fts',
+      name: 'search',
+      value: searchTerm
+    };
+  };
+
+  /**
    * @namespace belhop.annotations
    */
   belhop.annotations = {};
@@ -1185,6 +1204,15 @@
     }
     var _cb = belhop.factory.callback(success, error);
     apiGET(null, path, _cb, options);
+  };
+
+  belhop.annotations.searchByType = function(type, searchTerm, cb) {
+    // TODO search annotations/type with a filter...
+    // type can be an annotation type or string
+  };
+
+  belhop.annotations.search = function(searchTerm, cb) {
+    // TODO search annotations/values with a filter...
   };
 
   /**
